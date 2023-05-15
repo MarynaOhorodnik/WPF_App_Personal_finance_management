@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="WPF_App_Personal_finance_management.User_Views.EditInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_App_Personal_finance_management.User_Views"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="800" d:DesignWidth="1250">
+    <Grid Background="White">
+        <TextBlock Text="Налаштування" HorizontalAlignment="Left" FontSize="20" Margin="30 0 0 0"/>
+        <StackPanel Margin="250 100 250 0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="tbName" Grid.Column="0" Grid.Row="0" Margin="0 0 0 0" materialDesign:HintAssist.Hint="Ім'я" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <Button Grid.Column="1" Grid.Row="0" Margin="15 0 0 0" Height="40" Click="EditNameButton_Click" Background="#4d4d4d" BorderBrush="#4d4d4d">
+                    <TextBlock Text="Змінити ім'я" Foreground="White"/>
+                </Button>
+
+                <TextBlock Grid.Row="1" Height="80" />
+
+                <PasswordBox x:Name="passbox1" Grid.Column="0" Grid.Row="2" Margin="0 0 0 0" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                <PasswordBox x:Name="passbox2" Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Пароль ще раз" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+
+                <Button Grid.Column="1" Grid.Row="3" Margin="15 0 0 0" Height="40" Click="EditPassButton_Click" Background="#4d4d4d" BorderBrush="#4d4d4d" >
+                    <TextBlock Text="Змінити пароль" Foreground="White"/>
+                </Button>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>
