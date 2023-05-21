@@ -112,7 +112,6 @@ namespace WPF_App_Personal_finance_management.User_Views
             string comment = tbCommentOutc.Text;
             bool flag = true;
 
-
             float f;
             int i;
 
@@ -123,11 +122,11 @@ namespace WPF_App_Personal_finance_management.User_Views
             }
             else if (int.TryParse(total, out i) | float.TryParse(total.Replace(".", ","), out f))
             {
-                if (f > 0)
+                if (f < 0)
                 {
                     EditTextBox(tbTotalOutc);
                 }
-                else if (i > 0)
+                else if (i < 0)
                 {
                     EditTextBox(tbTotalOutc);
                 }
@@ -168,14 +167,12 @@ namespace WPF_App_Personal_finance_management.User_Views
             {
                 DataRowView oDataRowView = cbOutcomeCtg.SelectedItem as DataRowView;
                 int id_category = Convert.ToInt32(oDataRowView.Row["id"]);
-                double total_min = Convert.ToDouble(total);
-                total_min = total_min - 2 * total_min;
 
                 DB db = new DB();
 
                 string str_command = "INSERT INTO outcome (total, category_id, date, comment, user_id) VALUES (@total, @category_id, @date, @comment, @user_id);";
                 ArrayList list_str = new ArrayList() { "@total", "@category_id", "@date", "@comment", "@user_id" };
-                ArrayList list_var = new ArrayList() { total_min, id_category, DateFormat(date), comment, _CurrentUser.Id };
+                ArrayList list_var = new ArrayList() { total.Replace(",", "."), id_category, DateFormat(date), comment, _CurrentUser.Id };
 
                 bool flag2 = db.EditTable(str_command, list_str, list_var);
 

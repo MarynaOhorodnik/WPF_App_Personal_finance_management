@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Data;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using WPF_App_Personal_finance_management.Classes;
 
 namespace WPF_App_Personal_finance_management.Edit_Windows
@@ -76,22 +78,66 @@ namespace WPF_App_Personal_finance_management.Edit_Windows
                 string total = tbTotal.Text;
                 string date = dpDate.Text;
                 string comment = tbComment.Text;
+                bool flag = true;
 
-                DB db = new DB();
+                float f;
+                int i;
 
-                string str_command = "UPDATE income SET total = @total, category_id = @category_id, date = @date, comment = @comment WHERE income.id = @id";
-                ArrayList list_str = new ArrayList() { "@total", "@category_id", "@date", "@comment", "@id" };
-                ArrayList list_var = new ArrayList() { total, id_category, DateFormat(date), comment, idInc };
-
-                bool flag = db.EditTable(str_command, list_str, list_var);
-
-                if (flag)
+                if (total == "")
                 {
-                    this.Close();
+                    EditTextBox(tbTotal, false);
+                    flag = false;
+                }
+                else if (int.TryParse(total, out i) | float.TryParse(total.Replace(".", ","), out f))
+                {
+                    if (f > 0)
+                    {
+                        EditTextBox(tbTotal);
+                    }
+                    else if (i > 0)
+                    {
+                        EditTextBox(tbTotal);
+                    }
+                    else
+                    {
+                        EditTextBox(tbTotal, false);
+                        flag = false;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Щось пішло не так!");
+                    EditTextBox(tbTotal, false);
+                    flag = false;
+                }
+
+                if (date == "")
+                {
+                    EditDatePicker(dpDate, false);
+                    flag = false;
+                }
+                else
+                {
+                    EditDatePicker(dpDate);
+                }
+
+                if (flag)
+                {
+                    DB db = new DB();
+
+                    string str_command = "UPDATE income SET total = @total, category_id = @category_id, date = @date, comment = @comment WHERE income.id = @id";
+                    ArrayList list_str = new ArrayList() { "@total", "@category_id", "@date", "@comment", "@id" };
+                    ArrayList list_var = new ArrayList() { total.Replace(",", "."), id_category, DateFormat(date), comment, idInc };
+
+                    bool flag1 = db.EditTable(str_command, list_str, list_var);
+
+                    if (flag1)
+                    {
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Щось пішло не так!");
+                    }
                 }
             }
         }
@@ -125,6 +171,30 @@ namespace WPF_App_Personal_finance_management.Edit_Windows
 
             string result = year + "-" + month + "-" + day;
             return result;
+        }
+
+        private void EditTextBox(TextBox box, bool mark = true)
+        {
+            if (mark)
+            {
+                box.Background = Brushes.Transparent;
+            }
+            else
+            {
+                box.Background = Brushes.MistyRose;
+            }
+        }
+
+        private void EditDatePicker(DatePicker box, bool mark = true)
+        {
+            if (mark)
+            {
+                box.Background = Brushes.Transparent;
+            }
+            else
+            {
+                box.Background = Brushes.MistyRose;
+            }
         }
     }
 }
