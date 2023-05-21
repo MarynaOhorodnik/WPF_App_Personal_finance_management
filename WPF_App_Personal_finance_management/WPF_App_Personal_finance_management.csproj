@@ -96,32 +96,16 @@
     <Compile Include="RegWindow.xaml.cs">
       <DependentUpon>RegWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User_ViewModels\AddIncomeViewModel.cs" />
-    <Compile Include="User_ViewModels\AddOutcomeViewModel.cs" />
     <Compile Include="User_ViewModels\AddViewModel.cs" />
     <Compile Include="User_ViewModels\ChartViewModel.cs" />
-    <Compile Include="User_ViewModels\CtgIncomeViewModel.cs" />
-    <Compile Include="User_ViewModels\CtgOutcomeViewModel.cs" />
     <Compile Include="User_ViewModels\CtgViewModel.cs" />
     <Compile Include="User_ViewModels\EditInfoViewModel.cs" />
     <Compile Include="User_ViewModels\MainViewModel.cs" />
-    <Compile Include="User_Views\AddIncomeView.xaml.cs">
-      <DependentUpon>AddIncomeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User_Views\AddOutcomeView.xaml.cs">
-      <DependentUpon>AddOutcomeView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="User_Views\AddView.xaml.cs">
       <DependentUpon>AddView.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_Views\ChartView.xaml.cs">
       <DependentUpon>ChartView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User_Views\CtgIncomeView.xaml.cs">
-      <DependentUpon>CtgIncomeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User_Views\CtgOutcomeView.xaml.cs">
-      <DependentUpon>CtgOutcomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_Views\CtgView.xaml.cs">
       <DependentUpon>CtgView.xaml</DependentUpon>
@@ -185,27 +169,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User_Views\AddIncomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User_Views\AddOutcomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="User_Views\AddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User_Views\ChartView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User_Views\CtgIncomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User_Views\CtgOutcomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
