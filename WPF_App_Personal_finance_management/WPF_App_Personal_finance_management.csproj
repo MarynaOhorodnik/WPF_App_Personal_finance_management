@@ -72,6 +72,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ViewModels\AdmEditInfoViewModel.cs" />
+    <Compile Include="Admin_ViewModels\AdmUserViewModel.cs" />
+    <Compile Include="Admin_ViewModels\AdmViewModel.cs" />
+    <Compile Include="Admin_Views\AdmEditInfoView.xaml.cs">
+      <DependentUpon>AdmEditInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Views\AdmUserView.xaml.cs">
+      <DependentUpon>AdmUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Views\AdmView.xaml.cs">
+      <DependentUpon>AdmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Views\AdmWinEditUser.xaml.cs">
+      <DependentUpon>AdmWinEditUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Charts\IncomePieChart.xaml.cs">
       <DependentUpon>IncomePieChart.xaml</DependentUpon>
     </Compile>
@@ -81,20 +99,23 @@
     <Compile Include="Charts\TotalBarChart.xaml.cs">
       <DependentUpon>TotalBarChart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Edit_Windows\EditIncome.xaml.cs">
-      <DependentUpon>EditIncome.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Edit_Windows\EditIncomeCtg.xaml.cs">
-      <DependentUpon>EditIncomeCtg.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Edit_Windows\EditOutcome.xaml.cs">
-      <DependentUpon>EditOutcome.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Edit_Windows\EditOutcomeCtg.xaml.cs">
-      <DependentUpon>EditOutcomeCtg.xaml</DependentUpon>
+    <Compile Include="Charts\TotalLineChart.xaml.cs">
+      <DependentUpon>TotalLineChart.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegWindow.xaml.cs">
       <DependentUpon>RegWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_EditWindows\EditIncome.xaml.cs">
+      <DependentUpon>EditIncome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_EditWindows\EditIncomeCtg.xaml.cs">
+      <DependentUpon>EditIncomeCtg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_EditWindows\EditOutcome.xaml.cs">
+      <DependentUpon>EditOutcome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_EditWindows\EditOutcomeCtg.xaml.cs">
+      <DependentUpon>EditOutcomeCtg.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_ViewModels\AddViewModel.cs" />
     <Compile Include="User_ViewModels\ChartViewModel.cs" />
@@ -116,6 +137,26 @@
     <Compile Include="User_Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Views\AdmEditInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Views\AdmUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Views\AdmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin_Views\AdmWinEditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AuthWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,19 +173,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Edit_Windows\EditIncome.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit_Windows\EditIncomeCtg.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit_Windows\EditOutcome.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit_Windows\EditOutcomeCtg.xaml">
+    <Page Include="Charts\TotalLineChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,6 +195,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RegWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_EditWindows\EditIncome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_EditWindows\EditIncomeCtg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_EditWindows\EditOutcome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_EditWindows\EditOutcomeCtg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

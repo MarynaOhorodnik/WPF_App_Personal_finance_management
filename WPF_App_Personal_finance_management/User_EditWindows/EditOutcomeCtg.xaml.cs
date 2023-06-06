@@ -3,7 +3,7 @@ using System.Data;
 using System.Windows;
 using WPF_App_Personal_finance_management.Classes;
 
-namespace WPF_App_Personal_finance_management.Edit_Windows
+namespace WPF_App_Personal_finance_management.User_EditWindows
 {
     /// <summary>
     /// Interaction logic for EditOutcomeCtg.xaml

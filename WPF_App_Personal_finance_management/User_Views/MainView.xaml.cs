@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using WPF_App_Personal_finance_management.Charts;
 using WPF_App_Personal_finance_management.Classes;
-using WPF_App_Personal_finance_management.Edit_Windows;
+using WPF_App_Personal_finance_management.User_EditWindows;
 
 namespace WPF_App_Personal_finance_management.User_Views
 {
@@ -229,9 +229,9 @@ namespace WPF_App_Personal_finance_management.User_Views
 
             TotalControl.DataContext = new TotalBarChart(income, outcome1);
 
-            btIncome.Content = "Надходження: " + income.ToString();
-            btOutcome.Content = "Витрати: " + outcome.ToString();
-            btTotal.Content = "Баланс: " + total.ToString();
+            txtIncome.Text = income.ToString();
+            txtOutcome.Text = outcome.ToString();
+            txtTotal.Text = total.ToString();
         }
 
         private void IncomeEditButton_Click(object sender, RoutedEventArgs e)

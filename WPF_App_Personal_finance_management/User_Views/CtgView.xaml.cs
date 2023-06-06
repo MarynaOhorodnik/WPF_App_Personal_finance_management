@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using WPF_App_Personal_finance_management.Classes;
-using WPF_App_Personal_finance_management.Edit_Windows;
+using WPF_App_Personal_finance_management.User_EditWindows;
 
 namespace WPF_App_Personal_finance_management.User_Views
 {

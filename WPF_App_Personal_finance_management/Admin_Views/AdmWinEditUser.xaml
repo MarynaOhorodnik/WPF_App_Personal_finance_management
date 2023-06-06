@@ -1,0 +1,20 @@
+﻿<Window x:Class="WPF_App_Personal_finance_management.Admin_Views.AdmWinEditUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="AdmWinEditUser" Height="500" Width="700" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel Margin="50 50 50 50">
+            <TextBox x:Name="tbName" materialDesign:HintAssist.Hint="Ім'я" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <TextBox x:Name="tbLogin" materialDesign:HintAssist.Hint="Логін" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <TextBox x:Name="tbPass" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <TextBox x:Name="tbEmail" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <TextBox x:Name="tbDelete" materialDesign:HintAssist.Hint="Видалено" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            
+            <Button Margin="50 30" Content="Зберегти зміни" Click="SaveButton_Click" Style="{StaticResource MaterialDesignFlatAccentBgButton}" />
+        </StackPanel>
+    </Grid>
+</Window>

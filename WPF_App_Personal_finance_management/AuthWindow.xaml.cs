@@ -56,15 +56,26 @@ namespace WPF_App_Personal_finance_management
                 if (table.Rows.Count > 0)
                 {
                     _CurrentUser.NewUser(login);
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    this.Close();
+
+                    if(table.Rows[0][0].ToString() == "1")
+                    {
+                        AdminWindow adminWindow = new AdminWindow();
+                        adminWindow.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        this.Close();
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Логін або пароль введені неправильно");
                 }
             }
+
         }
 
         private void RegButton_Click(object sender, RoutedEventArgs e)

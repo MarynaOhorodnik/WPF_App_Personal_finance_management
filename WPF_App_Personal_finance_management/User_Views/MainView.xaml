@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="800" d:DesignWidth="1250">
+             d:DesignHeight="800" d:DesignWidth="1250" FontSize="16">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -28,11 +28,13 @@
             <ComboBox x:Name="cbYear" Margin="10 -4 10 0" materialDesign:HintAssist.Hint="Рік" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       DropDownClosed="CbYear_DropDownClosed"/>
         </StackPanel >
-        <Button Click="YearButton_Click" Grid.Column="3" Grid.Row="0" Margin="10 0 350 0">Від початку року</Button>
-        <Button Click="PeriodButton_Click" Grid.Column="3" Grid.Row="0" Margin="150 0 200 0">Весь період</Button>
-        
-        <Button Margin="0 10 20 0" Width="55" Height="55" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" Click="ReloadButton_Click" 
-                Background="#4d4d4d" BorderBrush="Transparent" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" >
+        <Button Click="YearButton_Click" Grid.Column="3" Grid.Row="0" Margin="10 0 350 0"
+                Style="{StaticResource  MaterialDesignPaperButton}">Від початку року</Button>
+        <Button Click="PeriodButton_Click" Grid.Column="3" Grid.Row="0" Margin="170 0 200 0"
+                Style="{StaticResource MaterialDesignPaperSecondaryButton}">Весь період</Button>
+
+        <Button Margin="0 10 20 0" Width="55" Height="55" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" 
+                Click="ReloadButton_Click" Background="#4d4d4d" BorderBrush="Transparent" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" >
             <materialDesign:PackIcon Kind="Cached" Width="25" Height="25"/>
         </Button>
 
@@ -41,12 +43,39 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="2.2*" />
             </Grid.RowDefinitions>
-            
-            <StackPanel Grid.Row="0" HorizontalAlignment="Center">
-                <Button x:Name="btIncome" FontSize="18" FontWeight="Regular" Content="Надходження: 5000 uah" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="0 0 0 2" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.8*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" 
+                           Foreground="{DynamicResource PrimaryHueDarkBrush}" Style="{StaticResource MaterialDesignHeadline6TextBlock}" >Надходження:</TextBlock>
+                <TextBlock x:Name="txtIncome" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left"
+                           Foreground="{DynamicResource PrimaryHueDarkBrush}" Style="{StaticResource MaterialDesignHeadline6TextBlock}">250000</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"
+                           Foreground="{DynamicResource SecondaryHueMidBrush}" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Витрати:</TextBlock>
+                <TextBlock x:Name="txtOutcome" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1" HorizontalAlignment="Left"
+                           Foreground="{DynamicResource SecondaryHueMidBrush}" Style="{StaticResource MaterialDesignHeadline6TextBlock}">-250000</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"
+                           Foreground="{DynamicResource MaterialDesignBody}" Style="{StaticResource MaterialDesignHeadline6TextBlock}">Баланс:</TextBlock>
+                <TextBlock x:Name="txtTotal" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Left"
+                           Foreground="{DynamicResource MaterialDesignBody}" Style="{StaticResource MaterialDesignHeadline6TextBlock}">250000</TextBlock>
+            </Grid>
+
+            <!--<StackPanel Grid.Row="0" HorizontalAlignment="Center">
+                
+                -->
+            <!--<Button x:Name="btIncome" FontSize="18" FontWeight="Regular" Content="Надходження: 5000 uah" Style="{StaticResource MaterialDesignFlatMidBgButton}" Margin="0 0 0 2" />
                 <Button x:Name="btOutcome" FontSize="18" FontWeight="Regular" Content="Витрати: -1000 uah" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Margin="0 0 0 2" />
-                <Button x:Name="btTotal" FontSize="18" FontWeight="Regular" Content="Баланс: 4000 uah" Style="{StaticResource MaterialDesignPaperButton}" BorderBrush="Transparent" />
-            </StackPanel>
+                <Button x:Name="btTotal" FontSize="18" FontWeight="Regular" Content="Баланс: 4000 uah" Style="{StaticResource MaterialDesignPaperButton}" BorderBrush="Transparent" />-->
+            <!--
+            </StackPanel>-->
 
             <ContentControl Margin="0 10 0 0" x:Name="TotalControl" Grid.Row="1" Content="{Binding}" />
 

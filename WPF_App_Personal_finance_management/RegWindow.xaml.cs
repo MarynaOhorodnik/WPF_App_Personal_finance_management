@@ -29,75 +29,75 @@ namespace WPF_App_Personal_finance_management
 
             if (name.Length < 3)
             {
-                editTextBox(tbName, "Мінімальна довжина ім'я 3 символи", true);
+                EditTextBox(tbName, "Мінімальна довжина ім'я 3 символи", true);
                 flag = false;
             }
             else if (name.Length > 20)
             {
-                editTextBox(tbName, "Максимальна довжина ім'я - 20 символів", true);
+                EditTextBox(tbName, "Максимальна довжина ім'я - 20 символів", true);
                 flag = false;
             }
             else if (!name.All(c => char.IsLetter(c)))
             {
-                editTextBox(tbName, "Ім'я може містити лише літери", true);
+                EditTextBox(tbName, "Ім'я може містити лише літери", true);
                 flag = false;
             }
             else
             {
-                editTextBox(tbName);
+                EditTextBox(tbName);
             }
 
             if (login.Length < 5)
             {
-                editTextBox(tbLogin, "Мінімальна довжина логіну 5 символів", true);
+                EditTextBox(tbLogin, "Мінімальна довжина логіну 5 символів", true);
                 flag = false;
             }
             else if (login.Length > 20)
             {
-                editTextBox(tbName, "Максимальна довжина логіну - 20 символів", true);
+                EditTextBox(tbLogin, "Максимальна довжина логіну - 20 символів", true);
                 flag = false;
             }
             else if (!login.All(c => char.IsLetterOrDigit(c) || c == '_'))
             {
-                editTextBox(tbLogin, "Логін може містити лише букви, цифри та символ _ ", true);
+                EditTextBox(tbLogin, "Логін може містити лише букви, цифри та символ _ ", true);
                 flag = false;
             }
-            else if (checkLogin(login))
+            else if (CheckLogin(login))
             {
-                editTextBox(tbLogin, "Такий логін вже існує", true);
+                EditTextBox(tbLogin, "Такий логін вже існує", true);
                 flag = false;
             }
             else
             {
-                editTextBox(tbLogin);
+                EditTextBox(tbLogin);
             }
 
             if (email.Length < 5 || !email.Contains("@") || !email.Contains("."))
             {
-                editTextBox(tbEmail, "Некоректне значення", true);
+                EditTextBox(tbEmail, "Некоректне значення", true);
                 flag = false;
             }
             else
             {
-                editTextBox(tbEmail);
+                EditTextBox(tbEmail);
             }
 
             if (pass1.Length < 5)
             {
-                editPassBox(passbox1, "Мінімальна довжина паролю 5 символів", true);
+                EditPassBox(passbox1, "Мінімальна довжина паролю 5 символів", true);
                 flag = false;
             }
             else
             {
-                editPassBox(passbox1);
+                EditPassBox(passbox1);
                 if (pass1 != pass2)
                 {
-                    editPassBox(passbox2, "Паролі не збігаються", true);
+                    EditPassBox(passbox2, "Паролі не збігаються", true);
                     flag = false;
                 }
                 else
                 {
-                    editPassBox(passbox2);
+                    EditPassBox(passbox2);
                 }
             }
 
@@ -143,7 +143,7 @@ namespace WPF_App_Personal_finance_management
             }
         }
 
-        private void editTextBox(TextBox textbox, string str = "", bool mark = false)
+        private void EditTextBox(TextBox textbox, string str = "", bool mark = false)
         {
             if (mark)
             {
@@ -157,7 +157,7 @@ namespace WPF_App_Personal_finance_management
             }
         }
 
-        private void editPassBox(PasswordBox passbox, string str = "", bool mark = false)
+        private void EditPassBox(PasswordBox passbox, string str = "", bool mark = false)
         {
             if (mark)
             {
@@ -171,7 +171,7 @@ namespace WPF_App_Personal_finance_management
             }
         }
 
-        private bool checkLogin(string login)
+        private bool CheckLogin(string login)
         {
             DB db = new DB();
 

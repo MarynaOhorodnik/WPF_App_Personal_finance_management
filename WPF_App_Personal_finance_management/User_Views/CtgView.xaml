@@ -63,7 +63,7 @@
                             </ListView.View>
                         </ListView>
 
-                        <TextBlock x:Name="ResultTxtInc" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" />
+                        <TextBlock x:Name="ResultTxtInc" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Medium" Foreground="DimGray" />
                     </StackPanel>
                 </ScrollViewer>
             </DockPanel>

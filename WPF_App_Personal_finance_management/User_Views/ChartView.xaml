@@ -6,6 +6,8 @@
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1250">
     <Grid Background="White">
-        <TextBlock FontSize="50" HorizontalAlignment="Center">Text</TextBlock>
+        <TextBlock FontSize="50" HorizontalAlignment="Center">Графік</TextBlock>
+
+        <ContentControl Margin="30 100 30 30" x:Name="LineControl" Content="{Binding}" />
     </Grid>
 </UserControl>

@@ -6,22 +6,23 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using WPF_App_Personal_finance_management.Classes;
 
-namespace WPF_App_Personal_finance_management.Edit_Windows
+namespace WPF_App_Personal_finance_management.User_EditWindows
 {
     /// <summary>
-    /// Interaction logic for EditIncome.xaml
+    /// Interaction logic for EditOutcome.xaml
     /// </summary>
-    public partial class EditIncome : Window
+    public partial class EditOutcome : Window
     {
-        private int idInc;
-        private string totalInc;
-        private string nameCtgInc;
-        private string dateInc;
-        private string comInc;
-        public EditIncome(int id)
+        private int idOutc;
+        private string totalOutc;
+        private string nameCtgOutc;
+        private string dateOutc;
+        private string comOutc;
+        public EditOutcome(int id)
         {
             InitializeComponent();
-            idInc = id;
+
+            idOutc = id;
 
             FillCategory();
             Fill_value(id);
@@ -31,48 +32,48 @@ namespace WPF_App_Personal_finance_management.Edit_Windows
         {
             DB db = new DB();
 
-            string str_command = "SELECT * FROM category_income WHERE is_delete = 0 AND user_id = @user_id";
+            string str_command = "SELECT * FROM category_outcome WHERE is_delete = 0 AND user_id = @user_id";
 
             ArrayList list_str = new ArrayList() { "@user_id" };
             ArrayList list_var = new ArrayList() { _CurrentUser.Id };
 
             DataTable table = db.SelectTable(str_command, list_str, list_var);
 
-            cbIncomeCtg.ItemsSource = table.DefaultView;
-            cbIncomeCtg.Text = default;
+            cbOutcomeCtg.ItemsSource = table.DefaultView;
+            cbOutcomeCtg.Text = default;
         }
 
         private void Fill_value(int i)
         {
             DB db = new DB();
 
-            string str_command = "SELECT INC.id, INC.total, INC.category_id, CTG.name, FORMAT(INC.date, 'dd.MM.yy') AS date , INC.comment FROM income AS INC, category_income AS CTG WHERE INC.category_id = CTG.id AND INC.id = @id";
+            string str_command = "SELECT OUTC.id, OUTC.total, OUTC.category_id, CTG.name, FORMAT(OUTC.date, 'dd.MM.yy') AS date , OUTC.comment FROM outcome AS OUTC, category_outcome AS CTG WHERE OUTC.category_id = CTG.id AND OUTC.id = @id";
 
             ArrayList list_str = new ArrayList() { "@id" };
             ArrayList list_var = new ArrayList() { i };
 
             DataTable table = db.SelectTable(str_command, list_str, list_var);
 
-            totalInc = table.Rows[0][1].ToString();
-            nameCtgInc = table.Rows[0][3].ToString();
-            dateInc = table.Rows[0][4].ToString();
-            comInc = table.Rows[0][5].ToString();
+            totalOutc = table.Rows[0][1].ToString();
+            nameCtgOutc = table.Rows[0][3].ToString();
+            dateOutc = table.Rows[0][4].ToString();
+            comOutc = table.Rows[0][5].ToString();
 
-            tbTotal.Text = totalInc;
-            cbIncomeCtg.SelectedIndex = IndexComboBox(nameCtgInc);
-            dpDate.SelectedDate = Convert.ToDateTime(dateInc);
-            tbComment.Text = comInc;
+            tbTotal.Text = totalOutc;
+            cbOutcomeCtg.SelectedIndex = IndexComboBox(nameCtgOutc);
+            dpDate.SelectedDate = Convert.ToDateTime(dateOutc);
+            tbComment.Text = comOutc;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (tbTotal.Text == totalInc && (cbIncomeCtg.SelectedItem as DataRowView).Row["name"].ToString() == nameCtgInc && dpDate.Text == dateInc && tbComment.Text == comInc)
+            if (tbTotal.Text == totalOutc && (cbOutcomeCtg.SelectedItem as DataRowView).Row["name"].ToString() == nameCtgOutc && dpDate.Text == dateOutc && tbComment.Text == comOutc)
             {
                 return;
             }
             else
             {
-                DataRowView oDataRowView = cbIncomeCtg.SelectedItem as DataRowView;
+                DataRowView oDataRowView = cbOutcomeCtg.SelectedItem as DataRowView;
                 int id_category = Convert.ToInt32(oDataRowView.Row["id"]);
 
                 string total = tbTotal.Text;
@@ -90,11 +91,11 @@ namespace WPF_App_Personal_finance_management.Edit_Windows
                 }
                 else if (int.TryParse(total, out i) | float.TryParse(total.Replace(".", ","), out f))
                 {
-                    if (f > 0)
+                    if (f < 0)
                     {
                         EditTextBox(tbTotal);
                     }
-                    else if (i > 0)
+                    else if (i < 0)
                     {
                         EditTextBox(tbTotal);
                     }
@@ -124,9 +125,9 @@ namespace WPF_App_Personal_finance_management.Edit_Windows
                 {
                     DB db = new DB();
 
-                    string str_command = "UPDATE income SET total = @total, category_id = @category_id, date = @date, comment = @comment WHERE income.id = @id";
+                    string str_command = "UPDATE outcome SET total = @total, category_id = @category_id, date = @date, comment = @comment WHERE outcome.id = @id";
                     ArrayList list_str = new ArrayList() { "@total", "@category_id", "@date", "@comment", "@id" };
-                    ArrayList list_var = new ArrayList() { total.Replace(",", "."), id_category, DateFormat(date), comment, idInc };
+                    ArrayList list_var = new ArrayList() { total.Replace(",", "."), id_category, DateFormat(date), comment, idOutc };
 
                     bool flag1 = db.EditTable(str_command, list_str, list_var);
 
@@ -146,7 +147,7 @@ namespace WPF_App_Personal_finance_management.Edit_Windows
         {
             DB db = new DB();
 
-            string str_command = "SELECT * FROM category_income WHERE is_delete = 0 AND user_id = @id";
+            string str_command = "SELECT * FROM category_outcome WHERE is_delete = 0 AND user_id = @id";
 
             ArrayList list_str = new ArrayList() { "@id" };
             ArrayList list_var = new ArrayList() { _CurrentUser.Id };
