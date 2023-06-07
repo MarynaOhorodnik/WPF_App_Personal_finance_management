@@ -18,60 +18,66 @@ namespace WPF_App_Personal_finance_management.Charts
             Labels = new[] { "Січ", "Лют", "Бер", "Квіт", "Трав", "Черв", "Лип", "Серп", "Вер", "Жовт", "Лист", "Груд" };
 
             SeriesCollection = new SeriesCollection();
+            int j;
             
-            LineSeries x1 = new LineSeries();
-            x1.Title = "Надходження";
-            x1.Values = new ChartValues<double>();
-            int j = 0;
-            for (int i = 1; i < Labels.Length; i++)
+            if(list_inc.Count > 0 )
             {
-                int x = Convert.ToInt32(list_inc_tit[j]);
-                if (x == i)
+                LineSeries x1 = new LineSeries();
+                x1.Title = "Надходження";
+                x1.Values = new ChartValues<double>();
+                j = 0;
+                for (int i = 1; i < Labels.Length; i++)
                 {
-                    x1.Values.Add(list_inc[j]);
-                    if(j == list_inc_tit.Count-1)
+                    int x = Convert.ToInt32(list_inc_tit[j]);
+                    if (x == i)
                     {
-                        continue;
+                        x1.Values.Add(list_inc[j]);
+                        if (j == list_inc_tit.Count - 1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            j++;
+                        }
                     }
                     else
                     {
-                        j++;
+                        x1.Values.Add(double.NaN);
                     }
                 }
-                else
-                {
-                    x1.Values.Add(double.NaN);
-                }             
+                SeriesCollection.Add(x1);
             }
 
-            LineSeries x2 = new LineSeries();
-            x2.Title = "Витрати";
-            x2.Values = new ChartValues<double>();
-            j = 0;
-            for (int i = 1; i < Labels.Length; i++)
+            if(list_outc.Count > 0 )
             {
-                int x = Convert.ToInt32(list_outc_tit[j]);
-                if (x == i)
+                LineSeries x2 = new LineSeries();
+                x2.Title = "Витрати";
+                x2.Values = new ChartValues<double>();
+                j = 0;
+                for (int i = 1; i < Labels.Length; i++)
                 {
-                    x2.Values.Add(list_outc[j]);
-                    if (j == list_outc_tit.Count - 1)
+                    int x = Convert.ToInt32(list_outc_tit[j]);
+                    if (x == i)
                     {
-                        continue;
+                        x2.Values.Add(list_outc[j]);
+                        if (j == list_outc_tit.Count - 1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            j++;
+                        }
                     }
                     else
                     {
-                        j++;
+                        x2.Values.Add(double.NaN);
                     }
-                }
-                else
-                {
-                    x2.Values.Add(double.NaN);
-                }
 
+                }
+                SeriesCollection.Add(x2);
             }
-
-            SeriesCollection.Add(x1);
-            SeriesCollection.Add(x2);
 
             DataContext = this;
         }

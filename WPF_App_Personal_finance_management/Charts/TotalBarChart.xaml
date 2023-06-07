@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="None" Margin="0 0 0 0" DisableAnimations="True" IsHitTestVisible="False" >
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="None" Margin="0 0 0 0" >
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis ShowLabels="False" Labels="{Binding Labels}" />
             </lvc:CartesianChart.AxisX>

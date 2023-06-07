@@ -14,6 +14,7 @@ namespace WPF_App_Personal_finance_management.User_Views
     /// </summary>
     public partial class MainView : UserControl
     {
+        int f = 0;
         public MainView()
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace WPF_App_Personal_finance_management.User_Views
             cbYear.SelectedIndex = 0;
         }
 
-        private void ReloadAll(int flag = 0)
+        private void ReloadAll()
         {
             string str_command_inc = "";
             string str_command_outc = "";
@@ -47,7 +48,7 @@ namespace WPF_App_Personal_finance_management.User_Views
             DB db = new DB();
             
             
-            if(flag == 0)
+            if(f == 0)
             {
                 int month = cbMonth.SelectedIndex + 1;
                 int year = Convert.ToInt32(cbYear.SelectedItem);
@@ -72,9 +73,9 @@ namespace WPF_App_Personal_finance_management.User_Views
                 list_str = new ArrayList() { "@id", "@month", "@year" };
                 list_var = new ArrayList() { _CurrentUser.Id, month, year };
             }
-            else if(flag == 1)
+            else if(f == 1)
             {
-                cbYear.SelectedIndex = 0;
+                //cbYear.SelectedIndex = 0;
                 int year = Convert.ToInt32(cbYear.SelectedItem);
 
                 str_command_inc = "SELECT INC.id, INC.total, INC.category_id, FORMAT(INC.date, 'dd.MM.yy') AS date , INC.comment, INC.is_delete, INC.user_id, CTG.name " +
@@ -97,7 +98,7 @@ namespace WPF_App_Personal_finance_management.User_Views
                 list_str = new ArrayList() { "@id", "@year" };
                 list_var = new ArrayList() { _CurrentUser.Id, year };
             }
-            else if (flag == 2)
+            else if (f == 2)
             {
                 str_command_inc = "SELECT INC.id, INC.total, INC.category_id, FORMAT(INC.date, 'dd.MM.yy') AS date , INC.comment, INC.is_delete, INC.user_id, CTG.name " +
                     "FROM income AS INC, category_income AS CTG " +
@@ -259,6 +260,7 @@ namespace WPF_App_Personal_finance_management.User_Views
 
                     if (flag)
                     {
+                        f = 0;
                         ReloadAll();
                     }
                     else
@@ -298,6 +300,7 @@ namespace WPF_App_Personal_finance_management.User_Views
 
                     if (flag)
                     {
+                        f = 0;
                         ReloadAll();
                     }
                     else
@@ -315,32 +318,50 @@ namespace WPF_App_Personal_finance_management.User_Views
         
         private void ReloadButton_Click(object sender, RoutedEventArgs e)
         {
+            ReloadAll();
+        }
+
+        private void MonthButton_Click(object sender, RoutedEventArgs e)
+        {
             FillDate();
+            f = 0;
             ReloadAll();
         }
 
         private void YearButton_Click(object sender, RoutedEventArgs e)
         {
-            ReloadAll(1);
+            cbYear.SelectedIndex = 0;
+            f = 1;
+            ReloadAll();
             cbMonth.SelectedIndex = -1;
             cbYear.SelectedIndex = 0;
         }
 
         private void PeriodButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            ReloadAll(2);
+            f = 2;
+            ReloadAll();
             cbMonth.SelectedIndex = -1;
             cbYear.SelectedIndex = -1;
         }
 
         private void CbYear_DropDownClosed(object sender, EventArgs e)
         {
-            ReloadAll();
+            if(cbMonth.SelectedIndex == -1)
+            {
+                f = 1;
+                ReloadAll();
+            }
+            else
+            {
+                f = 0;
+                ReloadAll();
+            }
         }
 
         private void CbMonth_DropDownClosed(object sender, EventArgs e)
         {
+            f = 0;
             ReloadAll();
         }
     }

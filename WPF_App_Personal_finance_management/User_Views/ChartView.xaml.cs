@@ -16,17 +16,24 @@ namespace WPF_App_Personal_finance_management.User_Views
         {
             InitializeComponent();
 
+            cbYear.ItemsSource = new string[] { "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015" };
+            cbYear.SelectedIndex = 0;
+
             LineChart();
         }
 
         private void LineChart()
         {
+            int year = Convert.ToInt32(cbYear.SelectedItem);
+
             DB db = new DB();
 
-            string str_command1 = "SELECT SUM(total) AS sum, MONTH(date) as month FROM income WHERE is_delete = 0 AND user_id = @id GROUP BY MONTH(date) ORDER BY month";
-            string str_command2 = "SELECT SUM(total) AS sum, MONTH(date) as month FROM outcome WHERE is_delete = 0 AND user_id = @id GROUP BY MONTH(date) ORDER BY month";
-            ArrayList  list_str = new ArrayList() { "@id" };
-            ArrayList  list_var = new ArrayList() { _CurrentUser.Id };
+            string str_command1 = "SELECT SUM(total) AS sum, MONTH(date) as month FROM income WHERE is_delete = 0 AND user_id = @id AND YEAR(date) = @year " +
+                "GROUP BY MONTH(date) ORDER BY month";
+            string str_command2 = "SELECT SUM(total) AS sum, MONTH(date) as month FROM outcome WHERE is_delete = 0 AND user_id = @id AND YEAR(date) = @year " +
+                "GROUP BY MONTH(date) ORDER BY month";
+            ArrayList  list_str = new ArrayList() { "@id", "@year" };
+            ArrayList  list_var = new ArrayList() { _CurrentUser.Id, year };
 
             DataTable table1 = db.SelectTable(str_command1, list_str, list_var);
             DataTable table2 = db.SelectTable(str_command2, list_str, list_var);
@@ -52,6 +59,11 @@ namespace WPF_App_Personal_finance_management.User_Views
 
 
             LineControl.DataContext = new TotalLineChart(list_inc, list_inc_tit, list_outc, list_outc_tit);
+        }
+
+        private void cbYear_DropDownClosed(object sender, EventArgs e)
+        {
+            LineChart();
         }
     }
 }

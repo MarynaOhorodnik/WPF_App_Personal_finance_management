@@ -28,9 +28,11 @@
             <ComboBox x:Name="cbYear" Margin="10 -4 10 0" materialDesign:HintAssist.Hint="Рік" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       DropDownClosed="CbYear_DropDownClosed"/>
         </StackPanel >
-        <Button Click="YearButton_Click" Grid.Column="3" Grid.Row="0" Margin="10 0 350 0"
-                Style="{StaticResource  MaterialDesignPaperButton}">Від початку року</Button>
-        <Button Click="PeriodButton_Click" Grid.Column="3" Grid.Row="0" Margin="170 0 200 0"
+        <Button Click="MonthButton_Click" Grid.Column="3" Grid.Row="0" Margin="10 0 390 0"
+                Style="{StaticResource  MaterialDesignPaperButton}">Міясць</Button>
+        <Button Click="YearButton_Click" Grid.Column="3" Grid.Row="0" Margin="130 0 290 0"
+                Style="{StaticResource  MaterialDesignPaperButton}">Рік</Button>
+        <Button Click="PeriodButton_Click" Grid.Column="3" Grid.Row="0" Margin="230 0 150 0"
                 Style="{StaticResource MaterialDesignPaperSecondaryButton}">Весь період</Button>
 
         <Button Margin="0 10 20 0" Width="55" Height="55" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" 

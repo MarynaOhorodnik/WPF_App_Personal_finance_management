@@ -3,10 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1250">
     <Grid Background="White">
-        <TextBlock FontSize="50" HorizontalAlignment="Center">Графік</TextBlock>
+        <TextBlock Text="Графік" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" Margin="30 0 0 0"/>
+
+        <ComboBox x:Name="cbYear" VerticalAlignment="Top" Width="300" FontSize="18" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Рік" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  DropDownClosed="cbYear_DropDownClosed"/>
+
+        <!--<ComboBox x:Name="cbYear" Margin="10 -4 10 0" materialDesign:HintAssist.Hint="Рік" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      DropDownClosed="CbYear_DropDownClosed"/>-->
 
         <ContentControl Margin="30 100 30 30" x:Name="LineControl" Content="{Binding}" />
     </Grid>
