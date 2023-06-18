@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1250">
     <Grid Background="White">
-        <TextBlock Text="Графік" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" Margin="30 0 0 0"/>
+        <TextBlock Text="Огляд" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" Margin="30 0 0 0"/>
 
         <ComboBox x:Name="cbYear" VerticalAlignment="Top" Width="300" FontSize="18" Margin="0 20 0 0" materialDesign:HintAssist.Hint="Рік" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                   DropDownClosed="cbYear_DropDownClosed"/>
